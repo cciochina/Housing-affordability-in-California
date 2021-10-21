@@ -121,22 +121,22 @@ function buildBarChart(state = 'AK', year = 2019) {
 function get_color(depth) {
     var color = "rgb(0, 255, 0)";
     // if depth is negative just set a light green color
-    if (depth <= 10000) {
+    if (depth <= 50000) {
         color = "rgb(0, 255, 0)";
     }
-    else if (depth > 10 && depth <= 30) {
+    else if (depth > 50000 && depth <= 100000) {
         color = "rgb(200, 209, 67)";
     }
-    else if (depth > 30 && depth <= 50) {
+    else if (depth > 100000 && depth <= 250000) {
         color = "rgb(237, 192, 95)";
     }
-    else if (depth > 50 && depth <= 70) {
+    else if (depth > 250000 && depth <= 500000) {
         color = "rgb(230, 154, 83)";
     }
-    else if (depth > 70 && depth <= 90) {
+    else if (depth > 500000 && depth <= 1000000) {
         color = "rgb(227, 98, 43)";
     }
-    else if (depth > 90) {
+    else if (depth > 1000000) {
         color = "rgb(204, 19, 6)";
     }
     // console.log(color);
@@ -241,7 +241,7 @@ function add_legend(map) {
 
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"],
+        grades = ["<$50,000", "$50,000 - 100,000", "$100,000 - 250,000", "$250,000 - 500,000", "$500,000 - 1,000,000", "$1,000,000<"],
             colors = ["rgb(0, 255, 0)",
                 "rgb(200, 209, 67)",
                 "rgb(237, 192, 95)",
